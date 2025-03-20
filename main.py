@@ -37,7 +37,7 @@ def decode_vin(vin):
         return False, f"Error contacting NHTSA API: {str(e)}"
 
 # Streamlit app title
-st.title("REQUEST SERVICE LINCOLN")
+st.title("REQUEST SERVICE LINCOLN" )
 
 # Create a form
 with st.form(key="repair_request_form"):
@@ -53,7 +53,7 @@ if submit_button:
     if not all([repair_order, shop_name, vin_number, request_description, earliest_start_date]):
         st.error("Please fill out all fields.")
     else:
-        vin_valid, vin_error = is_valid_vin(vin_number)
+        vin_valid, vin_error = is_valid_vin(vin_number.upper())
         if not vin_valid:
             st.error(vin_error)
         else:
